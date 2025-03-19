@@ -1,0 +1,52 @@
+
+#include <iostream>
+using namespace std;
+
+const float PI = 3.14159;
+
+float calculateArea(float radius) {
+    return PI * radius * radius;
+}
+
+float calculateCircumference(float radius) {
+    return 2 * PI * radius;
+}
+
+int main() {
+    float radius;
+    char choice;
+    
+    cout << "Enter Radius: ";
+    cin >> radius;
+    
+    while (radius <= 0) {
+        cout << "Please enter a positive radius: ";
+        cin >> radius;
+    }
+    
+    cout << "\nChoose operation:\n";
+    cout << "A - Area\n";
+    cout << "C - Circumference\n";
+    cout << "B - Both\n";
+    cout << "Enter choice: ";
+    cin >> choice;
+    
+    choice = toupper(choice);
+    
+    switch (choice) {
+        case 'A':
+            cout << "\nArea: " << calculateArea(radius) << " square units" << endl;
+            break;
+        case 'C':
+            cout << "\nCircumference: " << calculateCircumference(radius) << " units" << endl;
+            break;
+        case 'B':
+            cout << "\nArea: " << calculateArea(radius) << " square units" << endl;
+            cout << "Circumference: " << calculateCircumference(radius) << " units" << endl;
+            break;
+        default:
+            cout << "\nInvalid choice!" << endl;
+    }
+    
+    return 0;
+}
