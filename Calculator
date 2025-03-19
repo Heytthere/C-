@@ -1,0 +1,46 @@
+/*calculator.cpp
+Yashvi Joshi
+This is C++ program making a virtual calculator..*/
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a, b, choice;
+
+  cout << "Simple Calculator\n";
+  cout << "Enter 1st number: ";
+  cin >> a;
+  cout << "Enter 2nd number: ";
+  cin >> b;
+
+  cout << "\nAvailable Operations:\n";
+  cout << "1. Addition\n";
+  cout << "2. Subtraction\n";
+  cout << "3. Multiplication\n";
+  cout << "4. Division\n";
+  cout << "Enter your choice (1-4): ";
+  cin >> choice;
+
+  switch (choice) {
+  case 1:
+    cout << a << " + " << b << " = " << (a + b) << endl;
+    break;
+  case 2:
+    cout << a << " - " << b << " = " << (a - b) << endl;
+    break;
+  case 3:
+    cout << a << " * " << b << " = " << (a * b) << endl;
+    break;
+  case 4:
+    if (b != 0) {
+      cout << a << " / " << b << " = " << (static_cast<float>(a) / b) << endl;
+    } else {
+      cout << "Error: Division by zero!" << endl;
+    }
+    break;
+  default:
+    cout << "Invalid choice!" << endl;
+  }
+
+  return 0;
+}
