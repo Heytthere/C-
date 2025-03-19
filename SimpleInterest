@@ -1,4 +1,6 @@
-
+/*simpleinterest.cpp
+  Yashvi Joshi
+  This is C++ program for print simple interest..*/
 #include <iostream>
 using namespace std;
 
