@@ -1,0 +1,67 @@
+/*financialAnalysis.cpp
+Yashvi Joshi
+This is C++ program for caclulation simple interest, compound interest and EMI using class..*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+class FinancialCalculator {
+private:
+    double principal, rate, time;
+
+public:
+    void getInput() {
+        do {
+            cout << "Enter Principal Amount (>0): ";
+            cin >> principal;
+        } while (principal <= 0);
+
+        do {
+            cout << "Enter Annual Interest Rate (0-100): ";
+            cin >> rate;
+        } while (rate < 0 || rate > 100);
+
+        do {
+            cout << "Enter Time in Years (>0): ";
+            cin >> time;
+        } while (time <= 0);
+    }
+
+    double calculateSimpleInterest() {
+        return (principal * rate * time) / 100;
+    }
+
+    double calculateCompoundInterest() {
+        return principal * pow(1 + (rate / 100), time) - principal;
+    }
+
+    double calculateEMI() {
+        double monthlyRate = (rate / 12) / 100;
+        int months = time * 12;
+        return principal * monthlyRate * pow(1 + monthlyRate, months) / 
+               (pow(1 + monthlyRate, months) - 1);
+    }
+
+    void displayResults() {
+        cout << fixed << setprecision(2);
+        cout << "\n=== Financial Calculations ===\n";
+        cout << "Principal Amount: $" << principal << endl;
+        cout << "Annual Interest Rate: " << rate << "%" << endl;
+        cout << "Time Period: " << time << " years\n\n";
+
+        cout << "Simple Interest: $" << calculateSimpleInterest() << endl;
+        cout << "Compound Interest: $" << calculateCompoundInterest() << endl;
+        cout << "Monthly EMI: $" << calculateEMI() << endl;
+
+        double totalPayment = calculateEMI() * time * 12;
+        cout << "Total Payment with EMI: $" << totalPayment << endl;
+    }
+};
+
+int main() {
+    FinancialCalculator calc;
+    calc.getInput();
+    calc.displayResults();
+    return 0;
+}
